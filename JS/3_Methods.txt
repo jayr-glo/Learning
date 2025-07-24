@@ -1,0 +1,47 @@
+In JavaScript, the `map()` method is used to **transform** each element in an array and return a **new array** with the transformed elements.
+
+### 🔹 Syntax
+
+```javascript
+const newArray = array.map(callback(currentValue, index, array));
+```
+
+### 🔹 Parameters
+
+* `callback`: A function that is called for every element in the array.
+
+  * `currentValue`: The current element being processed.
+  * `index` *(optional)*: The index of the current element.
+  * `array` *(optional)*: The array `map()` was called on.
+* `newArray`: The result of running the callback function on every element.
+
+### 🔹 Example
+
+```javascript
+const numbers = [1, 2, 3, 4];
+
+// Multiply each number by 2
+const doubled = numbers.map(num => num * 2);
+
+console.log(doubled); // [2, 4, 6, 8]
+```
+
+### 🔹 Key Points
+
+* **Returns a new array** (does not modify the original).
+* Commonly used for **transforming data** (e.g., formatting, calculations).
+* Works only on **arrays**.
+
+### 🔹 Another Example: Mapping Objects
+
+```javascript
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 }
+];
+
+const names = users.map(user => user.name);
+
+console.log(names); // ["Alice", "Bob"]
+```
+

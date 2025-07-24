@@ -1,0 +1,236 @@
+
+
+## 🔶 OBJECT DESTRUCTURING
+
+---
+
+### ✅ 1. **Basic Destructuring**
+
+```js
+const user = { name: 'Alice', age: 30 };
+const { name, age } = user;
+```
+
+---
+
+### ✅ 2. **Renaming Variables**
+
+```js
+const user = { name: 'Alice' };
+const { name: userName } = user;
+// userName === 'Alice'
+```
+
+---
+
+### ✅ 3. **Default Values**
+
+```js
+const user = { name: 'Alice' };
+const { name, age = 25 } = user;
+// age === 25 (default used)
+```
+
+---
+
+### ✅ 4. **Nested Objects**
+
+```js
+const user = { name: 'Alice', address: { city: 'NYC' } };
+const { address: { city } } = user;
+// city === 'NYC'
+```
+
+---
+
+### ✅ 5. **Nested with Renaming and Default**
+
+```js
+const user = { address: {} };
+const { address: { city: location = 'Unknown' } } = user;
+// location === 'Unknown'
+```
+
+---
+
+### ✅ 6. **Destructuring in Function Parameters**
+
+```js
+function greet({ name }) {
+  console.log(`Hello, ${name}`);
+}
+greet({ name: 'Alice' });
+```
+
+---
+
+### ✅ 7. **Destructuring with Rest Properties**
+
+```js
+const user = { name: 'Alice', age: 30, email: 'a@example.com' };
+const { name, ...rest } = user;
+// rest === { age: 30, email: 'a@example.com' }
+```
+
+---
+
+### ✅ 8. **Destructuring from Returned Object**
+
+```js
+function getUser() {
+  return { id: 1, username: 'user1' };
+}
+const { id, username } = getUser();
+```
+
+---
+
+## 🔷 ARRAY DESTRUCTURING
+
+---
+
+### ✅ 1. **Basic Destructuring**
+
+```js
+const numbers = [10, 20, 30];
+const [a, b, c] = numbers;
+```
+
+---
+
+### ✅ 2. **Skipping Items**
+
+```js
+const [ , , third] = [1, 2, 3];
+// third === 3
+```
+
+---
+
+### ✅ 3. **Default Values**
+
+```js
+const [x = 5, y = 10] = [undefined];
+// x === 5, y === 10
+```
+
+---
+
+### ✅ 4. **Swapping Variables**
+
+```js
+let a = 1, b = 2;
+[a, b] = [b, a];
+```
+
+---
+
+### ✅ 5. **Rest in Arrays**
+
+```js
+const [first, ...others] = [1, 2, 3, 4];
+// first === 1, others === [2, 3, 4]
+```
+
+---
+
+### ✅ 6. **Nested Array Destructuring**
+
+```js
+const numbers = [1, [2, 3]];
+const [a, [b, c]] = numbers;
+// a === 1, b === 2, c === 3
+```
+
+---
+
+### ✅ 7. **Destructuring in Function Parameters**
+
+```js
+function sum([a, b]) {
+  return a + b;
+}
+sum([2, 3]); // 5
+```
+
+---
+
+### ✅ 8. **Destructuring Returned Arrays**
+
+```js
+function useCounter() {
+  return [10, () => console.log('increment')];
+}
+const [count, increment] = useCounter();
+```
+
+---
+
+## 🔶 COMBINED EXAMPLES
+
+---
+
+### ✅ 1. **Object in Array**
+
+```js
+const users = [{ name: 'Alice' }, { name: 'Bob' }];
+const [{ name: firstName }, { name: secondName }] = users;
+```
+
+---
+
+### ✅ 2. **Array in Object**
+
+```js
+const user = {
+  name: 'Alice',
+  hobbies: ['Reading', 'Gaming']
+};
+const { hobbies: [firstHobby] } = user;
+```
+
+---
+
+### ✅ 3. **Multiple Levels Mixed**
+
+```js
+const data = {
+  title: 'Post',
+  author: {
+    name: 'Alice',
+    social: {
+      twitter: '@alice'
+    }
+  },
+  tags: ['js', 'html']
+};
+
+const {
+  title,
+  author: {
+    name,
+    social: { twitter }
+  },
+  tags: [firstTag]
+} = data;
+```
+
+---
+
+## 🧪 Edge Case: Destructure Undefined or Null
+
+This **will throw an error** if you're not careful:
+
+```js
+const obj = null;
+const { a } = obj; // ❌ TypeError
+```
+
+✔ Safe destructuring with default:
+
+```js
+const obj = null;
+const { a = 1 } = obj || {};
+```
+
+
